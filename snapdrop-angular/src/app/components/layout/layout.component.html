@@ -1,0 +1,39 @@
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <mat-icon class="logo-icon">security</mat-icon>
+        <span class="logo-text">SnapDrop</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li 
+          *ngFor="let item of menuItems"
+          class="nav-item"
+          [class.active]="item.active"
+          (click)="onMenuItemClick(item)"
+        >
+          <div class="nav-link">
+            <mat-icon class="nav-icon">{{ item.icon }}</mat-icon>
+            <span class="nav-label">{{ item.label }}</span>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>LOGOUT</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

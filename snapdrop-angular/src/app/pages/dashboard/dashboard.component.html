@@ -1,0 +1,173 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    
+    <!-- Policy Statistics Row -->
+    <div class="stats-row">
+      <div class="stat-card stat-header">
+        <h3 class="stat-section-title">Policy Statistic</h3>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <span class="stat-label">Total Policies</span>
+            <span class="stat-value">{{ policyStatistics.totalPolicies }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Active</span>
+            <span class="stat-value active">{{ policyStatistics.active }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Inactive</span>
+            <span class="stat-value inactive">{{ policyStatistics.inactive }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Rejected</span>
+            <span class="stat-value rejected">{{ policyStatistics.rejected }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy Types and Format Types Row -->
+    <div class="cards-row">
+      <!-- Policy Types Section -->
+      <div class="section-card">
+        <h3 class="section-title">Policy Types</h3>
+        <div class="policy-types-grid">
+          <div class="policy-type-card" *ngFor="let type of policyTypes">
+            <div class="type-icon" [style.background-color]="type.color">
+              <mat-icon>{{ type.icon }}</mat-icon>
+            </div>
+            <div class="type-info">
+              <span class="type-label">{{ type.label }}</span>
+              <span class="type-value">{{ type.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Format Types Section -->
+      <div class="section-card format-types">
+        <h3 class="section-title">Format Types</h3>
+        <div class="format-chart">
+          <div class="pie-chart">
+            <svg viewBox="0 0 100 100" class="pie">
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="40"
+                fill="none"
+                stroke="#60a5fa"
+                stroke-width="20"
+                stroke-dasharray="75.4 25.1"
+                stroke-dashoffset="25"
+                transform="rotate(-90 50 50)">
+              </circle>
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="40"
+                fill="none"
+                stroke="#8b5cf6"
+                stroke-width="20"
+                stroke-dasharray="56.5 43.5"
+                stroke-dashoffset="-50.4"
+                transform="rotate(-90 50 50)">
+              </circle>
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="40"
+                fill="none"
+                stroke="#ec4899"
+                stroke-width="20"
+                stroke-dasharray="56.5 43.5"
+                stroke-dashoffset="-106.9"
+                transform="rotate(-90 50 50)">
+              </circle>
+            </svg>
+          </div>
+          <div class="format-legend">
+            <div class="legend-item" *ngFor="let format of formatTypes">
+              <div class="legend-color" [style.background-color]="format.color"></div>
+              <span class="legend-label">{{ format.label }}</span>
+              <span class="legend-value">{{ format.value }}.0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy Status Bar -->
+    <div class="status-bar-section">
+      <div class="section-card status-bar-card">
+        <h3 class="section-title">Policy Status</h3>
+        <div class="status-bar-container">
+          <div class="status-bar">
+            <div 
+              class="status-segment active" 
+              [style.width]="getStatusBarWidth('active')"
+              [style.background-color]="policyStatusBar.active.color">
+            </div>
+            <div 
+              class="status-segment inactive" 
+              [style.width]="getStatusBarWidth('inactive')"
+              [style.background-color]="policyStatusBar.inactive.color">
+            </div>
+            <div 
+              class="status-segment pending" 
+              [style.width]="getStatusBarWidth('pending')"
+              [style.background-color]="policyStatusBar.pending.color">
+            </div>
+          </div>
+          <div class="status-labels">
+            <div class="status-label">
+              <span class="status-dot" [style.background-color]="policyStatusBar.active.color"></span>
+              <span class="status-text">Active {{ policyStatusBar.active.value }}</span>
+            </div>
+            <div class="status-label">
+              <span class="status-dot" [style.background-color]="policyStatusBar.inactive.color"></span>
+              <span class="status-text">Inactive {{ policyStatusBar.inactive.value }}</span>
+            </div>
+            <div class="status-label">
+              <span class="status-dot" [style.background-color]="policyStatusBar.pending.color"></span>
+              <span class="status-text">Pending {{ policyStatusBar.pending.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy Metrics Grid -->
+    <div class="metrics-grid">
+      <div class="section-card metrics-left">
+        <h3 class="section-title">Policy status</h3>
+        <div class="metrics-list">
+          <div class="metric-item" *ngFor="let metric of policyMetrics.slice(0, 3)">
+            <span class="metric-label">{{ metric.label }}</span>
+            <span class="metric-value">{{ metric.value }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card metrics-right">
+        <h3 class="section-title">Policy status</h3>
+        <div class="metrics-list">
+          <div class="metric-item" *ngFor="let metric of policyMetrics.slice(3, 6)">
+            <span class="metric-label">{{ metric.label }}</span>
+            <span class="metric-value">{{ metric.value }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card metrics-bottom">
+        <h3 class="section-title">Policy status</h3>
+        <div class="metrics-list">
+          <div class="metric-item" *ngFor="let metric of policyMetrics.slice(6, 8)">
+            <span class="metric-label">{{ metric.label }}</span>
+            <span class="metric-value">{{ metric.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

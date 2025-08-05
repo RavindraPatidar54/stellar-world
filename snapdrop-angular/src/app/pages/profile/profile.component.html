@@ -1,0 +1,93 @@
+<div class="profile-page">
+  <div class="profile-container">
+    
+    <!-- Header -->
+    <div class="profile-header">
+      <h1 class="page-title">Profile</h1>
+      <button class="btn btn-primary logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </div>
+
+    <!-- User Profile Card -->
+    <div class="profile-card">
+      <div class="profile-info">
+        <div class="avatar">
+          <div class="avatar-circle">
+            <mat-icon class="avatar-icon">person</mat-icon>
+          </div>
+        </div>
+        
+        <div class="user-details">
+          <h2 class="user-name">{{ userInfo.name }}</h2>
+          <div class="user-meta">
+            <div class="meta-item">
+              <mat-icon class="meta-icon">email</mat-icon>
+              <span class="meta-text">{{ userInfo.email }}</span>
+            </div>
+            
+            <div class="meta-item">
+              <mat-icon class="meta-icon">location_on</mat-icon>
+              <span class="meta-text">{{ userInfo.location }}</span>
+            </div>
+            
+            <div class="meta-item">
+              <mat-icon class="meta-icon">language</mat-icon>
+              <span class="meta-text">{{ userInfo.language }}</span>
+            </div>
+            
+            <div class="meta-item">
+              <mat-icon class="meta-icon">schedule</mat-icon>
+              <span class="meta-text">{{ userInfo.lastLogin }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Settings -->
+    <div class="theme-settings">
+      <h3 class="settings-title">Theme Settings</h3>
+      
+      <div class="theme-options">
+        <div 
+          class="theme-option"
+          [class.active]="themeService.isLight()"
+          (click)="setTheme('light')"
+        >
+          <div class="theme-preview light-preview">
+            <div class="preview-header"></div>
+            <div class="preview-content">
+              <div class="preview-sidebar"></div>
+              <div class="preview-main">
+                <div class="preview-card"></div>
+                <div class="preview-card"></div>
+              </div>
+            </div>
+          </div>
+          <span class="theme-label">Default</span>
+        </div>
+        
+        <div 
+          class="theme-option"
+          [class.active]="themeService.isDark()"
+          (click)="setTheme('dark')"
+        >
+          <div class="theme-preview dark-preview">
+            <div class="preview-header"></div>
+            <div class="preview-content">
+              <div class="preview-sidebar"></div>
+              <div class="preview-main">
+                <div class="preview-card"></div>
+                <div class="preview-card"></div>
+              </div>
+            </div>
+          </div>
+          <span class="theme-label">Dark</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

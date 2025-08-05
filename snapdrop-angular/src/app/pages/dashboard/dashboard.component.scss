@@ -1,0 +1,446 @@
+.dashboard-page {
+  padding: 2rem;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Stats Row
+.stats-row {
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    
+    &.stat-header {
+      .stat-section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+      }
+      
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        
+        .stat-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+          }
+          
+          .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            
+            &.active {
+              color: var(--status-active);
+            }
+            
+            &.inactive {
+              color: var(--status-inactive);
+            }
+            
+            &.rejected {
+              color: var(--status-failed);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Cards Row
+.cards-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.section-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  
+  .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  // Policy Types
+  .policy-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    
+    .policy-type-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      
+      .type-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        mat-icon {
+          color: white;
+          font-size: 1.5rem;
+        }
+      }
+      
+      .type-info {
+        display: flex;
+        flex-direction: column;
+        
+        .type-label {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          margin-bottom: 0.25rem;
+        }
+        
+        .type-value {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+  
+  // Format Types
+  &.format-types {
+    .format-chart {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      
+      .pie-chart {
+        width: 120px;
+        height: 120px;
+        
+        .pie {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      
+      .format-legend {
+        flex: 1;
+        
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+          }
+          
+          .legend-label {
+            flex: 1;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+          }
+          
+          .legend-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Status Bar Section
+.status-bar-section {
+  .status-bar-card {
+    .status-bar-container {
+      .status-bar {
+        height: 12px;
+        border-radius: 6px;
+        display: flex;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        
+        .status-segment {
+          height: 100%;
+          
+          &:first-child {
+            border-radius: 6px 0 0 6px;
+          }
+          
+          &:last-child {
+            border-radius: 0 6px 6px 0;
+          }
+        }
+      }
+      
+      .status-labels {
+        display: flex;
+        justify-content: space-between;
+        
+        .status-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+          }
+          
+          .status-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Metrics Grid
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  
+  .metrics-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .metrics-right {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .metrics-bottom {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  
+  .metrics-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    
+    .metric-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      
+      .metric-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+      
+      .metric-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+    }
+  }
+  
+  .metrics-bottom .metrics-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .dashboard-page {
+    padding: 1.5rem;
+  }
+  
+  .cards-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-row .stat-card.stat-header .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .section-card .policy-types-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-card.format-types .format-chart {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 1rem;
+  }
+  
+  .stats-row .stat-card.stat-header .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    
+    .metrics-left,
+    .metrics-right,
+    .metrics-bottom {
+      grid-column: 1;
+    }
+  }
+  
+  .metrics-list {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .status-bar-section .status-bar-card .status-bar-container .status-labels {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-card {
+    padding: 1rem;
+    
+    .section-title {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .section-card .policy-types-grid .policy-type-card {
+    padding: 0.75rem;
+    
+    .type-icon {
+      width: 40px;
+      height: 40px;
+      
+      mat-icon {
+        font-size: 1.25rem;
+      }
+    }
+    
+    .type-info {
+      .type-value {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  
+  .metrics-list .metric-item {
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    
+    .metric-value {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+// Animation for stats
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-value {
+  animation: countUp 0.6s ease-out;
+}
+
+.metric-value {
+  animation: countUp 0.6s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+// Dark theme specific adjustments
+.dark-theme {
+  .section-card .policy-types-grid .policy-type-card,
+  .metrics-list .metric-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+  }
+}
+
+// Light theme specific adjustments
+.light-theme {
+  .section-card .policy-types-grid .policy-type-card,
+  .metrics-list .metric-item {
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+// Print styles
+@media print {
+  .dashboard-page {
+    padding: 0;
+  }
+  
+  .dashboard-container {
+    max-width: none;
+  }
+  
+  .section-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+}
